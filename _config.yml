@@ -1,2 +1,17 @@
 name: Daniel's site
 markdown: kramdown
+prose:
+  rooturl: '_posts'
+  siteurl: 'http://danielscw.github.io'
+  media: 'media'
+  ignore:
+    - README.md
+    - index.md
+    - _config.yml
+    - /_layouts
+  metadata:
+    _posts:
+      - name: "layout"
+        field:
+          element: "hidden"
+          value: "post"
