@@ -15,3 +15,13 @@ prose:
         field:
           element: "hidden"
           value: "post"
+      - name: "Level1Group"
+        field:
+          element: "text"
+          label: "Level 1 group"
+          value: "default"
+      - name: "Level2Group"
+        field:
+          element: "text"
+          label: "Level 2 group"
+          value: "default"
