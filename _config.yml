@@ -2,7 +2,6 @@ name: Daniel's site
 markdown: kramdown
 prose:
   rooturl: '_posts'
-  siteurl: 'http://danielscw.github.io'
   media: 'media'
   ignore:
     - README.md
