@@ -6,6 +6,9 @@ title: Daniel's Site
 <ul>
   {% assign group1 = "" | split: "|" %}
   {% for post in site.posts %}
+    {% if post.Level1Group == "" %}
+      {% continue %}
+    {% endif %}
     {% assign is_existed = false %}
     {% for g1 in group1 %}
       {% if post.Level1Group == g1 %}
@@ -21,7 +24,7 @@ title: Daniel's Site
   {% for g1 in group1 %}
     {% assign group2 = "" | split: "|" %}
     {% for post in site.posts %}
-      {% if post.Level1Group != g1 %}
+      {% if post.Level1Group != g1 or post.Level2Group == "" %}
         {% continue %}
       {% endif %}
 
