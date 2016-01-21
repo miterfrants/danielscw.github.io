@@ -18,14 +18,39 @@ title: Daniel's Site
     {% endif %}
   {% endfor %}
   
-  {% for g1 in group1 %}
-    <h1>{{ g1 }}</h1>
-    {% for post in site.posts %}
-      {% if post.Level1Group == g1 %}
-        <li>
-          <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-        </li>
+  {% assign group2 = "" | split: "|" %}
+  {% for post in site.posts %}
+    {% assign is_existed = false %}
+    {% for g2 in group2 %}
+      {% if post.Level2Group == g2 %}
+        {% assign is_existed = true %}
       {% endif %}
     {% endfor %}
+    
+    {% if is_existed == false %}
+      {% assign group2 = group2 | push: post.Level2Group %}
+    {% endif %}
+  {% endfor %}
+  
+  {% for g1 in group1 %}
+    <h1>{{ g1 }}</h1>
+    {% for g2 in group2 %}
+      <h2>{{ g2 }}</h2>
+      {% for post in site.posts %}
+        {% if post.Level1Group == g1 and post.Level2Group == g2 %}
+          <li>
+            <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  {% endfor %}
+
+  {% for post in site.posts %}
+    {% if post.Level1Group == null or post.Level2Group == null %}
+      <li>
+        <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+      </li>
+    {% endif %}
   {% endfor %}
 </ul>
