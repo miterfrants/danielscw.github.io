@@ -55,8 +55,10 @@ title: Daniel's Site
 
   <hr/>
   {% for post in site.posts %}
-    <li>
-      {{ post.title }} - {{ post.Level1Group }} - {{ post.Level2Group }}
-    </li>
+    {% if post.Level1Group == "" or post.Level2Group == "" %}
+      <li>
+        <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+      </li>
+    {% endif %}
   {% endfor %}
 </ul>
