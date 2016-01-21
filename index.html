@@ -6,7 +6,7 @@ title: Daniel's Site
 <ul>
   {% assign group1 = "" | split: "|" %}
   {% for post in site.posts %}
-    {% assign group1 = group1 | push: "post.Level1Group" %}
+    {% assign group1 = group1 | push: post.Level1Group %}
   {% endfor %}
   
   {% for g1 in group1 %}
