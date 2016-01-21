@@ -4,9 +4,19 @@ title: Daniel's Site
 ---
 <h1>{{ page.title }}</h1>
 <ul>
+  {% assign group1 = "" | split: "|" %}
   {% for post in site.posts %}
-    <li>
-      <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-    </li>
+    {% assign group1 = group1 | push: "post.Level1Group" %}
+  {% endfor %}
+  
+  {% for g1 in group1 %}
+    <h1>{{ g1 }}</h1>
+    {% for post in site.posts %}
+      {% if post.Level1Group == g1 %}
+        <li>
+          <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
   {% endfor %}
 </ul>
