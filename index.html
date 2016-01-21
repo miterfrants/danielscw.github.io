@@ -35,11 +35,10 @@ title: Daniel's Site
   {% for g1 in group1 %}
     <h1>{{ g1 }}</h1>
     {% for g2 in group2 %}
-      <h2>{{ g2 }}</h2>
       {% for post in site.posts %}
         {% if post.Level1Group == g1 and post.Level2Group == g2 %}
           <li>
-            <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+            {{ g2 }} - <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
           </li>
         {% endif %}
       {% endfor %}
