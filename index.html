@@ -6,7 +6,16 @@ title: Daniel's Site
 <ul>
   {% assign group1 = "" | split: "|" %}
   {% for post in site.posts %}
-    {% assign group1 = group1 | push: post.Level1Group %}
+    {% assign is_existed = false %}
+    {% for g1 in group1 %}
+      {% if post.Level1Group == g1 %}
+        {% assign is_existed = true %}
+      {% endif %}
+    {% endfor %}
+    
+    {% if is_existed == false %}
+      {% assign group1 = group1 | push: post.Level1Group %}
+    {% endif %}
   {% endfor %}
   
   {% for g1 in group1 %}
